@@ -34,8 +34,8 @@ class HomeController extends BaseController {
     public function showUsers()
     {
         $a = array(array('Stato','Utenti'),
-             array('Attivi', Member::count()->where('active', 'TRUE')),
-             array('Non attivi', Member::count()->where('active', 'FALSE')));
+             array('Attivi', Member::where('active', 'TRUE')->count()),
+             array('Non attivi', Member::where('active', 'FALSE')->count()));
         $this->layout->head = $this->googlePie($a);
         $this->layout->content = '<div id="piechart" style="width: 900px; height: 500px;"></div>';
     }
