@@ -37,7 +37,7 @@ class HomeController extends BaseController {
              array('Attivi', Member::where('active', 'TRUE')->count()),
              array('Non attivi', Member::where('active', 'FALSE')->count()));
         $this->layout->head = $this->googlePie($a, 'piechart');
-        $this->layout->content = '<h1>Utenti</h1><h3>Attivi vs inattivi</h3><div id="piechart" style="width: 900px; height: 500px;"></div>';
+        $this->layout->content = View::make('users');
     }
 
 }
