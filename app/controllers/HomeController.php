@@ -4,7 +4,7 @@ class HomeController extends BaseController {
 
     protected $layout = 'layout';
 
-    private function googlePie($data, $title = NULL)
+    private function googlePie($data, $name, $title = NULL)
     {
         $o = '<script type="text/javascript" src="https://www.google.com/jsapi"></script>' . "\n";
         $o.= '<script type="text/javascript">' . "\n";
@@ -19,7 +19,7 @@ class HomeController extends BaseController {
                 $o.= "title: '$title'\n";
             $o.= '};' . "\n";
 
-            $o.= "var chart = new google.visualization.PieChart(document.getElementById('piechart'));" . "\n";
+            $o.= "var chart = new google.visualization.PieChart(document.getElementById('$name'));" . "\n";
             $o.= 'chart.draw(data, options);' . "\n";
         $o.= '}' . "\n";
         $o.= '</script>' . "\n";
@@ -36,7 +36,7 @@ class HomeController extends BaseController {
         $a = array(array('Stato','Utenti'),
              array('Attivi', Member::where('active', 'TRUE')->count()),
              array('Non attivi', Member::where('active', 'FALSE')->count()));
-        $this->layout->head = $this->googlePie($a);
+        $this->layout->head = $this->googlePie($a, 'piechart');
         $this->layout->content = '<div id="piechart" style="width: 900px; height: 500px;"></div>';
     }
 
