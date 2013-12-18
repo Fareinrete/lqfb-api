@@ -26,8 +26,8 @@ class UserController extends BaseController {
         $i = 0;
         foreach ($out as $k => $v) {
             $result[$i] = array(
-                'date': $k,
-                'users': $v
+                'date' => $k,
+                'users' => $v
             );
             $i++;
         }
@@ -46,8 +46,8 @@ class UserController extends BaseController {
         $i = 0;
         foreach ($out as $k => $v) {
             $result[$i] = array(
-                'date': $k,
-                'users': $v
+                'date' => $k,
+                'users' => $v
             );
             $i++;
         }
