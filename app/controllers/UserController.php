@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class UserController extends BaseController {
 
     public function showActivatedJSON()
     {
