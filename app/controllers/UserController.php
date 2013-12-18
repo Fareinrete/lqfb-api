@@ -14,7 +14,12 @@ class UserController extends BaseController {
 
     public function showActivationsJSON()
     {
-        $out = DB::raw('SELECT date_trunc("day", activated) AS "Day" , count(*) AS "No. of users" FROM member WHERE active IS TRUE GROUP BY 1 ORDER BY 1;');
+        $members = Member::where('active', 'TRUE')->get();
+        $day = array();
+        foreach ($members as $k => $m) 
+            $day[$k] = date("Y-m-d", strtotime($m->activated));
+        $out = array_count_values($day);
+        ksort($out);
         return Response::json($out);
     }
 }
