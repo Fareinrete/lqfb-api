@@ -4,11 +4,11 @@ class UserController extends BaseController {
 
     public function showActivatedJSON()
     {
-        $actived = Member::where('active', 'TRUE')->count());
-        $unactived = Member::where('active', 'FALSE')->count());
+        $actived = Member::where('active', 'TRUE')->count();
+        $unactived = Member::where('active', 'FALSE')->count();
         $a = array(array('Stato','Utenti'),
-             array('Attivi', $actived,
-             array('Non attivi', $unactived);
+             array('Attivi', $actived),
+             array('Non attivi', $unactived));
         return Response::json($a);
     }
 
