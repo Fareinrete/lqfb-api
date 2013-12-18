@@ -22,4 +22,16 @@ class UserController extends BaseController {
         ksort($out);
         return Response::json($out);
     }
+
+    public function showLastLoginJSON()
+    {
+        $members = Member::where('active', 'TRUE')->get();
+        $day = array();
+        foreach ($members as $k => $m) 
+            $day[$k] = date("Y-m-d", strtotime($m->last_login));
+        $out = array_count_values($day);
+        ksort($out);
+        return Response::json($out);
+    }
+
 }
