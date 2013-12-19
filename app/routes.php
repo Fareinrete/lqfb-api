@@ -1,8 +1,5 @@
 <?php
 
-Route::get('/', 'HomeController@showHome');
-Route::get('users', 'HomeController@showUsers');
-
 // Admins
 Route::get('api/admins/activated/', 'AdminController@showActivatedJSON');
 
