@@ -7,11 +7,11 @@ class UserController extends BaseController {
         $actived = Member::where('active', 'TRUE')->count();
         $unactived = Member::where('active', 'FALSE')->count();
         $a = array(
-           'meta' => 'stato utenti',
-           'Attivi' => $actived,
-           'Non attivi' => $unactived
+           array('status' => 'active', 'userCount' => $actived),
+           array('status' => 'inactive', 'userCount' => $unactived)
         );
-        return Response::json($a)->setCallback(Input::get('callback'));
+        return Response::json(array('status_code' => 200, 'status_message' => 'OK', 'data' => $a))
+            ->setCallback(Input::get('callback'));
     }
 
     public function getActivations()
@@ -27,11 +27,13 @@ class UserController extends BaseController {
         foreach ($out as $k => $v) {
             $results[$i] = array(
                 'date' => $k,
-                'users' => $v
+                'userCount' => $v
             );
             $i++;
         }
-        return Response::json($results)->setCallback(Input::get('callback'));
+        return Response::json(array('status_code' => 200, 'status_message' => 'OK', 'data' => $results))
+            ->setCallback(Input::get('callback'));
+
     }
 
     public function getLastlogin()
@@ -47,11 +49,12 @@ class UserController extends BaseController {
         foreach ($out as $k => $v) {
             $results[$i] = array(
                 'date' => $k,
-                'users' => $v
+                'userCount' => $v
             );
             $i++;
         }
-        return Response::json($results)->setCallback(Input::get('callback'));
+        return Response::json(array('status_code' => 200, 'status_message' => 'OK', 'data' => $results))
+            ->setCallback(Input::get('callback'));
     }
 
 }

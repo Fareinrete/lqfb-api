@@ -7,11 +7,11 @@ class AdminController extends BaseController {
         $actived = Member::where('active', 'TRUE')->where('admin', 'TRUE')->count();
         $unactived = Member::where('active', 'FALSE')->where('admin', 'TRUE')->count();
         $a = array(
-           'meta' => 'stato utenti',
-           'Attivi' => $actived,
-           'Non attivi' => $unactived
+           array('status' => 'active', 'userCount' => $actived),
+           array('status' => 'inactive', 'userCount' => $unactived)
         );
-        return Response::json($a)->setCallback(Input::get('callback'));
+        return Response::json(array('status_code' => 200, 'status_message' => 'OK', 'data' => $a))
+            ->setCallback(Input::get('callback'));
     }
 
 }
