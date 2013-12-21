@@ -7,8 +7,8 @@ class UserController extends BaseController {
         $actived = Member::where('active', 'TRUE')->count();
         $unactived = Member::where('active', 'FALSE')->count();
         $a = array(
-           array('status' => 'active', 'userCount' => $actived),
-           array('status' => 'inactive', 'userCount' => $unactived)
+           array('status' => 'active', 'user_count' => $actived),
+           array('status' => 'inactive', 'user_count' => $unactived)
         );
         return Response::json(array('status_code' => 200, 'status_message' => 'OK', 'data' => $a))
             ->setCallback(Input::get('callback'));
@@ -27,7 +27,7 @@ class UserController extends BaseController {
         foreach ($out as $k => $v) {
             $results[$i] = array(
                 'date' => $k,
-                'userCount' => $v
+                'user_count' => $v
             );
             $i++;
         }
@@ -49,7 +49,7 @@ class UserController extends BaseController {
         foreach ($out as $k => $v) {
             $results[$i] = array(
                 'date' => $k,
-                'userCount' => $v
+                'user_count' => $v
             );
             $i++;
         }
