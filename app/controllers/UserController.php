@@ -2,7 +2,7 @@
 
 class UserController extends BaseController {
 
-    public function showActivatedJSON()
+    public function getActivated()
     {
         $actived = Member::where('active', 'TRUE')->count();
         $unactived = Member::where('active', 'FALSE')->count();
@@ -14,7 +14,7 @@ class UserController extends BaseController {
         return Response::json($a);
     }
 
-    public function showActivationsJSON()
+    public function getActivations()
     {
         $members = Member::where('active', 'TRUE')->get();
         $day = array();
@@ -34,7 +34,7 @@ class UserController extends BaseController {
         return Response::json($results);
     }
 
-    public function showLastLoginJSON()
+    public function getLastlogin()
     {
         $members = Member::where('active', 'TRUE')->get();
         $day = array();
