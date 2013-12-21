@@ -11,7 +11,7 @@ class AdminController extends BaseController {
            'Attivi' => $actived,
            'Non attivi' => $unactived
         );
-        return Response::json($a);
+        return Response::json($a, 200, array('Content-Type' => 'application/javascript'));
     }
 
 }

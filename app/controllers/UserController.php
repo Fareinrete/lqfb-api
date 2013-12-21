@@ -11,7 +11,7 @@ class UserController extends BaseController {
            'Attivi' => $actived,
            'Non attivi' => $unactived
         );
-        return Response::json($a);
+        return Response::json($a, 200, array('Content-Type' => 'application/javascript'));
     }
 
     public function getActivations()
@@ -31,7 +31,7 @@ class UserController extends BaseController {
             );
             $i++;
         }
-        return Response::json($results);
+        return Response::json($results, 200, array('Content-Type' => 'application/javascript'));
     }
 
     public function getLastlogin()
@@ -51,7 +51,7 @@ class UserController extends BaseController {
             );
             $i++;
         }
-        return Response::json($results);
+        return Response::json($results)->setCallback(Input::get('callback'));;
     }
 
 }
