@@ -11,7 +11,7 @@ class UserController extends BaseController {
            array('status' => 'inactive', 'user_count' => $unactived)
         );
         return Response::json(array('status_code' => 200, 'status_message' => 'OK', 
-                 'data' => $a, 'description' => 'Stato attuale utenza'))
+                 'description' => 'Stato attuale utenza', 'data' => $a))
             ->setCallback(Input::get('callback'));
     }
 
@@ -33,7 +33,7 @@ class UserController extends BaseController {
             $i++;
         }
         return Response::json(array('status_code' => 200, 'status_message' => 'OK',
-                 'data' => $results, 'description' => 'Attivazioni giornaliere'))
+                 'description' => 'Attivazioni giornaliere', 'data' => $results))
             ->setCallback(Input::get('callback'));
 
     }
@@ -56,7 +56,7 @@ class UserController extends BaseController {
             $i++;
         }
         return Response::json(array('status_code' => 200, 'status_message' => 'OK', 
-                 'data' => $results, 'description' => 'Login giornalieri'))
+                 'description' => 'Login giornalieri', 'data' => $results))
             ->setCallback(Input::get('callback'));
     }
 
