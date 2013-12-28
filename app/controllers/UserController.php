@@ -56,7 +56,7 @@ class UserController extends BaseController {
             $i++;
         }
         return Response::json(array('status_code' => 200, 'status_message' => 'OK', 
-                 'data' => $results, 'description' => 'Login giornalieri '))
+                 'data' => $results, 'description' => 'Login giornalieri'))
             ->setCallback(Input::get('callback'));
     }
 
