@@ -10,7 +10,8 @@ class AdminController extends BaseController {
            array('status' => 'active', 'user_count' => $actived),
            array('status' => 'inactive', 'user_count' => $unactived)
         );
-        return Response::json(array('status_code' => 200, 'status_message' => 'OK', 'data' => $a))
+        return Response::json(array('status_code' => 200, 'status_message' => 'OK', 
+                 'description' => 'Admins attivati', 'data' => $a))
             ->setCallback(Input::get('callback'));
     }
 
